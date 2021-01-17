@@ -1,8 +1,11 @@
-import { User } from "./models/User";
+import { User } from './models/User';
 
 const user = new User({});
 
-user.set({ name: "new name" });
+user.set({ name: 'new name' });
 
-console.log(user.get("name"));
-console.log(user.get("age"));
+user.on('change', () => {});
+user.on('change', () => {});
+user.on('change', () => {});
+
+console.log(user);
