@@ -1,3 +1,3 @@
 import axioas from 'axios';
 
-axioas.post('http://localhost:3000/users', { name: 'myname', age: 20 });
+axioas.get('http://localhost:3000/users/1');
