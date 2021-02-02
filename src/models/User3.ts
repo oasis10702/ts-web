@@ -7,6 +7,7 @@ interface UserProps {
   age?: number;
 }
 
+// Hard coding
 export class User {
   events: Eventing = new Eventing();
 
