@@ -1,16 +1,16 @@
-import { User } from "../models/User";
+import { User } from '../models/User';
 
 export class UserForm {
   constructor(public parent: Element, public model: User) {}
 
   eventsMap(): { [key: string]: () => void } {
     return {
-      "click:button": this.onButtonClick,
+      'click:.set-age': this.onSetAgeClick
     };
   }
 
-  onButtonClick(): void {
-    console.log("hi there");
+  onSetAgeClick(): void {
+    console.log('button was clicked');
   }
 
   template(): string {
@@ -21,6 +21,7 @@ export class UserForm {
         <div>User age: ${this.model.get('age')}</div>
         <input />
         <button>Click Me</button>
+        <button class="set-age">Set Random Age</button>
       </div>
     `;
   }
@@ -29,16 +30,16 @@ export class UserForm {
     const eventsMap = this.eventsMap();
 
     for (let eventKey in eventsMap) {
-      const [eventName, selector] = eventKey.split(":");
+      const [eventName, selector] = eventKey.split(':');
 
-      fragment.querySelectorAll(selector).forEach((element) => {
+      fragment.querySelectorAll(selector).forEach(element => {
         element.addEventListener(eventName, eventsMap[eventKey]);
       });
     }
   }
 
   render(): void {
-    const templateElement = document.createElement("template");
+    const templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
 
     this.bindEvents(templateElement.content);
