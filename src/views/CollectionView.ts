@@ -7,7 +7,6 @@ export abstract class CollectionView<T, K> {
 
   render(): void {
     this.parent.innerHTML = '';
-
     const templateElement = document.createElement('template');
 
     for (let model of this.collection.models) {
@@ -15,7 +14,6 @@ export abstract class CollectionView<T, K> {
       this.renderItem(model, itemParent);
       templateElement.content.append(itemParent);
     }
-
     this.parent.append(templateElement.content);
   }
 }
